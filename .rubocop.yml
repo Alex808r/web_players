@@ -1,0 +1,164 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-factory_bot
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.2
+  TargetRailsVersion: 7.0
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  Exclude:
+    - db/schema.rb
+    - vendor/**/*
+    - spec/requests/**/*
+
+##################### Bundler ##################################
+
+Bundler/OrderedGems:
+  Enabled: false
+
+##################### Gemspec ##################################
+
+Gemspec/OrderedDependencies:
+  Enabled: false
+
+##################### Rails ##################################
+
+Rails:
+  Enabled: true
+
+Rails/UnknownEnv:
+
+  Environments:
+    - development
+    - test
+    - staging
+    - production
+
+# Wooden-cop, broken for unnecessary inverse relations
+Rails/InverseOf:
+  Enabled: false
+
+Rails/Output:
+  Enabled: true
+
+# Allows to use .html_safe
+Rails/OutputSafety:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Exclude:
+    - db/migrate/*
+
+
+##################### Layout ##################################
+
+Layout/DotPosition:
+  EnforcedStyle: leading
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+Layout/LineLength:
+  Max: 120
+
+##################### Metrics ##################################
+
+Metrics/AbcSize:
+  Max: 60 # 15
+
+Metrics/BlockLength:
+  Max: 100 # 25
+  Exclude:
+    - config/routes.rb
+
+Metrics/ClassLength:
+  Max: 300 # 100
+
+Metrics/CyclomaticComplexity:
+  Max: 12 # 6
+
+Metrics/MethodLength:
+  Max: 42 # 10
+
+Metrics/ModuleLength:
+  Max: 250
+
+Metrics/PerceivedComplexity:
+  Max: 14 # 7
+
+##################### Naming ##################################
+
+Naming/VariableNumber:
+  Enabled: false
+# to be able to use 'if'
+Naming/MethodParameterName:
+  MinNameLength: 2
+Naming/VariableName:
+  Enabled: false
+
+##################### Style ##################################
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - Gemfile
+    - db/*/*
+    - views/*/*
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyMethod:
+  EnforcedStyle: compact
+
+Style/GuardClause:
+  MinBodyLength: 3 # 1
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/MixinUsage:
+  Exclude:
+    - 'bin/*'
+
+# More strong and clear mathematical logic
+Style/NumericPredicate:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
+Style/MultilineBlockChain:
+  Enabled: false
+
+Style/OpenStructUse:
+  Enabled: false
+
+Style/GlobalStdStream:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+##################### RSpec ##################################
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 50
+
+RSpec/EmptyExampleGroup:
+  Exclude:
+    - 'spec/requests'
+
+RSpec/VariableName:
+  Exclude:
+    - 'spec/requests'
+    - 
+RSpec/MultipleExpectations:
+  Max: 2
